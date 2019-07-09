@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MyRestaurants"
+        android:text="COMICY"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="35dp"
@@ -18,8 +18,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Restaurants"
-        android:id="@+id/button"
+        android:text="Find COMIC"
+        android:id="@+id/findComicsButton"
+        android:background="@color/colorPrimaryLight"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
