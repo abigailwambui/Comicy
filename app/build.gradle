@@ -28,6 +28,10 @@ android {
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/notice.txt'
     }
+
+    buildTypes.each {
+        it.buildConfigField 'String', 'COMICY_TOKEN', ComicyToken
+    }
 }
 
 dependencies {
