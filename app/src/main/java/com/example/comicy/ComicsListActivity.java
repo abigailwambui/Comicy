@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import java.io.IOException;
+
 import okhttp3.Callback;
 
 public class ComicsListActivity extends AppCompatActivity {
@@ -18,6 +20,22 @@ public class ComicsListActivity extends AppCompatActivity {
     private void getComics() {
         final ComicyService comicyService = new ComicyService();
         comicyService.findComics(new Callback() {
+
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try {
+                    String jsonData = response.body().string();
+                    Log.v(TAG, jsonData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
         });
     }
 }
