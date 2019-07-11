@@ -31,10 +31,9 @@ public class ComicyDetailFragment extends Fragment {
     @BindView(R.id.descriptionTextView) TextView mDescriptionLabel;
     @BindView(R.id.pagecountTextView)TextView mPagecountLabel;
     @BindView(R.id.issuenumberTextView) TextView mIssuenumberLabel;
-    @BindView(R.id.titleTextView) TextView mTitleLabel;
-    @BindView(R.id.comicModifiedTextView) TextView mComicModifiedLabel;
+    @BindView(R.id.comicTitleTextView) TextView mTitleLabel;
     @BindView(R.id.idTextView) TextView mIdLabel;
-    @BindView(R.id.saveComicButton) Button mSaveComicButton;
+//    @BindView(R.id.saveComicButton) Button mSaveComicButton;
 
     private Comicy mComics;
 
@@ -63,7 +62,6 @@ public class ComicyDetailFragment extends Fragment {
         mDescriptionLabel.setText(mComics.getDescription());
         mPagecountLabel.setText(mComics.getPagecount());
         mIssuenumberLabel.setText(mComics.getIssueNumber());
-        mComicModifiedLabel.setText(mComics.getModified());
         mIdLabel.setText(mComics.getId());
 
 //        mSaveComicButton.setOnClickListener(this);
