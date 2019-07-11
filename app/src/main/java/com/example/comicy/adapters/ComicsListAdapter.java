@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.comicy.R;
 import com.example.comicy.models.Comicy;
+import com.example.comicy.ui.ComicsDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -39,7 +40,7 @@ public class ComicsListAdapter extends RecyclerView.Adapter<ComicsListAdapter.Co
 
     @Override
     public void onBindViewHolder(ComicsListAdapter.ComicsViewHolder holder, int position) {
-        holder.bindComic(mComics.get(position));
+        holder.bindComicy(mComics.get(position));
     }
 
     @Override
@@ -51,8 +52,8 @@ public class ComicsListAdapter extends RecyclerView.Adapter<ComicsListAdapter.Co
     public class ComicsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @BindView(R.id.comicImageView)
         ImageView mThumbnailImageView;
-        @BindView(R.id.comicDescriptionTextView)
-        TextView mDescriptionTextView;
+        @BindView(R.id.comicModifiedTextView)
+        TextView mModifiedTextView;
         @BindView(R.id.titleTextView)
         TextView mTitleTextView;
         @BindView(R.id.formatTextView)
@@ -66,21 +67,24 @@ public class ComicsListAdapter extends RecyclerView.Adapter<ComicsListAdapter.Co
             mContext = itemView.getContext();
             itemView.setOnClickListener(this);
 
-            @Override
-            public void onClick (View v){
-                int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, ComicsDetailActivity.class);
-                intent.putExtra("position", itemPosition);
-                intent.putExtra("restaurants", Parcels.wrap(mComics));
-                mContext.startActivity(intent);
-            }
 
-            public void bindComic (Comicy comic){
-                Picasso.get().load(comic.getPrimaryImageUrl()).into(mThumbnailImageView);
-                mDescriptionTextView.setText(comic.getDescription());
-                mTitleTextView.setText(comic.getTitle());
-                mFormatTextView.setText(comic.getComic());
-            }
+
+        }
+        @Override
+        public void onClick (View view){
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, ComicsDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("restaurants", Parcels.wrap(mComics));
+            mContext.startActivity(intent);
+        }
+
+
+        public void bindComicy(Comicy comic) {
+            Picasso.get().load(comic.getThumbnail()).into(mThumbnailImageView);
+            mModifiedTextView.setText(comic.getModified());
+            mTitleTextView.setText(comic.getTitle());
+            mFormatTextView.setText(comic.getFormat());
         }
     }
 }

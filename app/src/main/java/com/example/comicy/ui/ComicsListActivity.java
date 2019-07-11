@@ -4,6 +4,7 @@ package com.example.comicy.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -25,8 +27,7 @@ public class ComicsListActivity extends AppCompatActivity {
 
     public static final String TAG = ComicsListActivity.class.getSimpleName();
     @BindView(R.id.recyclerView)RecyclerView mRecyclerView;
-//    @BindView(R.id.listView) ListView mListView;
-
+    ListView mListView;
     public ArrayList<Comicy> mComics = new ArrayList<>();
     private ComicsListAdapter mAdapter;
 
@@ -35,6 +36,7 @@ public class ComicsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comics_list);
+        ButterKnife.bind(this);
         getComics();
     }
 
@@ -56,9 +58,8 @@ public class ComicsListActivity extends AppCompatActivity {
                             public void run() {
                                 mAdapter = new ComicsListAdapter(getApplicationContext(), mComics);
                                 mRecyclerView.setAdapter(mAdapter);
-                                RecyclerView.LayoutManager layoutManager =
-                                        new LinearLayoutManager(ComicsListActivity.this);
-                                mRecyclerView.setLayoutManager(layoutManager);
+
+                                mRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
                                 mRecyclerView.setHasFixedSize(true);
                             }
                         });

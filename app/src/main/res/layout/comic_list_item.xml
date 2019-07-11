@@ -4,7 +4,8 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginBottom="15dp">
+    android:layout_marginBottom="15dp"
+    android:src="@drawable/marvel">
 
     <ImageView
         android:layout_width="130dp"
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/titleTextView"
-            android:textSize="20dp"
+            android:textSize="10dp"
             android:textStyle="bold"
             android:text="TITLE"
             android:textColor="@color/colorPrimaryText"/>
@@ -31,8 +32,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One Comic Type"
-            android:id="@+id/comicDescriptionTextView"
+            android:text="Format"
+            android:id="@+id/formatTextView"
             android:layout_below="@+id/titleTextView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -45,11 +46,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Format"
-                android:id="@+id/formatTextView"
+                android:text="Description"
+                android:id="@+id/comicModifiedTextView"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="#BDBDBD"/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

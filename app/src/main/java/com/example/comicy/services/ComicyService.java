@@ -28,6 +28,7 @@ public class ComicyService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.COMICY_BASE_URL).newBuilder();
         urlBuilder.addQueryParameter(Constants.COMICY_APIKEY_PARAMETER, Constants.COMICY_APIKEY);
         urlBuilder.addQueryParameter(Constants.COMICY_TS_PARAMETER, Constants.COMICY_TS);
+        urlBuilder.addQueryParameter(Constants.COMICY_HASH_PARAMETER, Constants.COMICY_TOKEN);
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
@@ -42,9 +43,9 @@ public class ComicyService {
         try {
             String jsonData = response.body().string();
             JSONObject jsonObject = new JSONObject(jsonData);
-            JSONArray resultsJSON = jsonObject.getJSONArray("results");
+            JSONArray resultsJSON = jsonObject.getJSONObject("data").getJSONArray("results");
             if (response.isSuccessful()) {
-                for (int i = 0; i < resultsJSON.length(); i++) {
+               for (int i = 0; i < resultsJSON.length(); i++) {
                     JSONObject comicyJSON = resultsJSON.getJSONObject(i);
                     String id = comicyJSON.getString("id");
                     String title = comicyJSON.getString("title");
@@ -52,12 +53,14 @@ public class ComicyService {
                     String description = comicyJSON.getString("description");
                     String format = comicyJSON.getString("format");
                     String modified = comicyJSON.getString("modified");
-                    String thumbnail = comicyJSON.getString("thumbnail");
+                    JSONObject thumbnail = comicyJSON.getJSONObject("thumbnail");
+                    String path = thumbnail.getString("path");
+                    String ext = thumbnail.getString("extension");
                     String pagecount = comicyJSON.getString("pageCount");
-
+                    String thumbnail1 = path.concat("."+ext);
 
                     Comicy comicy = new Comicy(id, title, issuenumber,
-                            description, format, modified, thumbnail, pagecount);
+                            description, format, modified, thumbnail1, pagecount);
                     comics.add(comicy);
                 }
             }

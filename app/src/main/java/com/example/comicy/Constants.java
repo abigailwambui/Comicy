@@ -7,4 +7,5 @@ public class Constants {
     public static final String COMICY_APIKEY_PARAMETER = "apikey";
     public static final String COMICY_TS = "1";
     public static final String COMICY_TS_PARAMETER = "ts";
+    public static final String COMICY_HASH_PARAMETER = "hash";
 }
