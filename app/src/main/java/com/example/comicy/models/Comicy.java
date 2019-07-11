@@ -1,4 +1,4 @@
-package com.example.comicy;
+package com.example.comicy.models;
 
 public class Comicy {
     private String mId;

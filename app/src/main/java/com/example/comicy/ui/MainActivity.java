@@ -1,4 +1,4 @@
-package com.example.comicy;
+package com.example.comicy.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.comicy.R;
 
 public class MainActivity extends AppCompatActivity {
     private Button mFindComicsButton;

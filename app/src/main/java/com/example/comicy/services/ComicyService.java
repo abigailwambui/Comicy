@@ -1,5 +1,8 @@
-package com.example.comicy;
+package com.example.comicy.services;
 
+
+import com.example.comicy.models.Comicy;
+import com.example.comicy.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
