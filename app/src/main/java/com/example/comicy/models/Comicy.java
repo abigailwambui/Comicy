@@ -1,5 +1,9 @@
 package com.example.comicy.models;
 
+
+import org.parceler.Parcel;
+
+@Parcel
 public class Comicy {
     private String mId;
     private String mTitle;
