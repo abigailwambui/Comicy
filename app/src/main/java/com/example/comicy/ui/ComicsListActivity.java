@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
+import com.example.comicy.adapters.ComicsListAdapter;
 import com.example.comicy.models.Comicy;
 import com.example.comicy.services.ComicyService;
 import com.example.comicy.R;
@@ -14,6 +16,7 @@ import com.example.comicy.R;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -21,7 +24,8 @@ import okhttp3.Response;
 public class ComicsListActivity extends AppCompatActivity {
 
     public static final String TAG = ComicsListActivity.class.getSimpleName();
-//    @BindView(R.id.listView)ListView mListView;
+    @BindView(R.id.recyclerView)RecyclerView mRecyclerView;
+//    @BindView(R.id.listView) ListView mListView;
 
     public ArrayList<Comicy> mComics = new ArrayList<>();
     private ComicsListAdapter mAdapter;
