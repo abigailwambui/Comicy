@@ -15,6 +15,8 @@ public class Comicy {
     private String mPagecount;
 
 
+    public Comicy() {}
+
     public Comicy(String id, String title, String issueNumber,
                   String description, String format, String modified,
                   String thumbnail, String pagecount) {
