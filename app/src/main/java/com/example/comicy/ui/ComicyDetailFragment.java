@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.comicy.Constants;
 import com.example.comicy.R;
 import com.example.comicy.models.Comicy;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -75,9 +77,17 @@ public class ComicyDetailFragment extends Fragment implements View.OnClickListen
     public  void onClick (View view) {
 
         if (view == mSavedComicsButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference comicRef = FirebaseDatabase
                     .getInstance()
-                   .getReference(Constants.FIREBASE_CHILD_COMICS);
+                   .getReference(Constants.FIREBASE_CHILD_COMICS)
+                    .child(uid);
+
+            DatabaseReference pushRef = comicRef.push();
+            String pushId = pushRef.getKey();
+            mComics.setPushId(pushId);
+            pushRef.setValue(mComics);
             comicRef.push().setValue(mComics);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }

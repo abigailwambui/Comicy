@@ -13,6 +13,7 @@ public class Comicy {
     private String modified;
     private String thumbnail;
     private String pagecount;
+    private String pushId;
 
 
     public Comicy() {}
@@ -62,4 +63,11 @@ public class Comicy {
         return pagecount;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }

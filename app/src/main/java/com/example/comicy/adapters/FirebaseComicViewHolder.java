@@ -11,6 +11,8 @@ import com.example.comicy.Constants;
 import com.example.comicy.R;
 import com.example.comicy.models.Comicy;
 import com.example.comicy.ui.ComicsDetailActivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +52,9 @@ public class FirebaseComicViewHolder extends RecyclerView.ViewHolder implements 
     @Override
     public void onClick(View view) {
         final ArrayList<Comicy> mComics = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COMICS);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COMICS).child(uid);
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override

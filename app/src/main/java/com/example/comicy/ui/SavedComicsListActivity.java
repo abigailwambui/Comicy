@@ -15,6 +15,8 @@ import com.example.comicy.adapters.FirebaseComicViewHolder;
 import com.example.comicy.models.Comicy;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +35,14 @@ public class SavedComicsListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comics_list);
         ButterKnife.bind(this);
         mComicsReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_COMICS);
+        setUpFirebaseAdapter();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
+        mComicsReference = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_COMICS)
+                .child(uid);
         setUpFirebaseAdapter();
     }
 
@@ -53,7 +63,7 @@ public class SavedComicsListActivity extends AppCompatActivity {
             @NonNull
             @Override
             public FirebaseComicViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comic_list_item, parent, false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.comic_list_item_drag, parent, false);
                 return new FirebaseComicViewHolder(view);
             }
         };
