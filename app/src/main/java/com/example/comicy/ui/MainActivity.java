@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     @BindView (R.id.findComicsButton) Button mFindComicsButton;
     @BindView(R.id.savedComicsButton) Button mSavedComicsButton;
 
