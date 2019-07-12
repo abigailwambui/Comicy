@@ -5,14 +5,14 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Comicy {
-    private String mId;
-    private String mTitle;
-    private String mIssueNumber;
-    private String mDescription;
-    private String mFormat;
-    private String mModified;
-    private String mThumbnail;
-    private String mPagecount;
+    private String id;
+    private String title;
+    private String issueNumber;
+    private String description;
+    private String format;
+    private String modified;
+    private String thumbnail;
+    private String pagecount;
 
 
     public Comicy() {}
@@ -20,46 +20,46 @@ public class Comicy {
     public Comicy(String id, String title, String issueNumber,
                   String description, String format, String modified,
                   String thumbnail, String pagecount) {
-        this.mId = id;
-        this.mTitle = title;
-        this.mIssueNumber = issueNumber;
-        this.mDescription = description;
-        this.mFormat = format;
-        this.mModified = modified;
-        this.mThumbnail = thumbnail;
-        this.mPagecount = pagecount;
+        this.id = id;
+        this.title = title;
+        this.issueNumber = issueNumber;
+        this.description = description;
+        this.format = format;
+        this.modified = modified;
+        this.thumbnail = thumbnail;
+        this.pagecount = pagecount;
     }
 
     public String getId() {
-        return mId;
+        return id;
     }
 
     public String getTitle() {
-        return mTitle;
+        return title;
     }
 
     public String getIssueNumber() {
-        return mIssueNumber;
+        return issueNumber;
     }
 
     public String getDescription() {
-        return mDescription;
+        return description;
     }
 
     public String getFormat() {
-        return mFormat;
+        return format;
     }
 
     public String getModified() {
-        return mModified;
+        return modified;
     }
 
     public String getThumbnail() {
-        return mThumbnail;
+        return thumbnail;
     }
 
     public String getPagecount() {
-        return mPagecount;
+        return pagecount;
     }
 
 }

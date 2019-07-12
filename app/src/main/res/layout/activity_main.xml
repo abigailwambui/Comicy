@@ -24,16 +24,19 @@
         android:text="Find COMIC" />
 
     <Button
+        android:id="@+id/savedComicsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="My Saved Comics"
-        android:id="@+id/savedComicsButton"
-        android:background="@color/colorPrimaryText"
-        android:textColor="@color/colorPrimaryLight"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginLeft="-2dp"
+        android:layout_marginBottom="58dp"
+        android:background="@color/colorPrimaryText"
+        android:text="My Saved Comics"
+        android:textColor="@color/colorPrimaryLight"
+        android:visibility="visible" />
 
 
 </RelativeLayout>

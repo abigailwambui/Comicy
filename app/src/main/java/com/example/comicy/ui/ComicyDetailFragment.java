@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.comicy.Constants;
 import com.example.comicy.R;
 import com.example.comicy.models.Comicy;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ComicyDetailFragment extends Fragment {
+public class ComicyDetailFragment extends Fragment implements View.OnClickListener {
 
     @BindView(R.id.comicImageView) ImageView mThumbnailImageView;
     @BindView(R.id.descriptionTextView) TextView mDescriptionLabel;
@@ -33,7 +34,7 @@ public class ComicyDetailFragment extends Fragment {
     @BindView(R.id.issuenumberTextView) TextView mIssuenumberLabel;
     @BindView(R.id.comicTitleTextView) TextView mTitleLabel;
     @BindView(R.id.idTextView) TextView mIdLabel;
-//    @BindView(R.id.saveComicButton) Button mSaveComicButton;
+    @BindView(R.id.saveComicButton) Button mSavedComicsButton;
 
     private Comicy mComics;
 
@@ -64,22 +65,22 @@ public class ComicyDetailFragment extends Fragment {
         mIssuenumberLabel.setText(mComics.getIssueNumber());
         mIdLabel.setText(mComics.getId());
 
-//        mSaveComicButton.setOnClickListener(this);
+        mSavedComicsButton.setOnClickListener(this);
 
         return view;
     }
 
 
-//    @Override
-//    public  void onClick (View view) {
-//
-//        if (view == mSaveComicButton) {
-//            DatabaseReference artRef = FirebaseDatabase
-//                    .getInstance();
-////                    .getReference(Constants.FIREBASE_CHILD_ARTS);
-//            artRef.push().setValue(mComics);
-//            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    @Override
+    public  void onClick (View view) {
+
+        if (view == mSavedComicsButton) {
+            DatabaseReference comicRef = FirebaseDatabase
+                    .getInstance()
+                   .getReference(Constants.FIREBASE_CHILD_COMICS);
+            comicRef.push().setValue(mComics);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 }
