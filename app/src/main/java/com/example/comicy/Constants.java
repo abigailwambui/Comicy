@@ -8,4 +8,5 @@ public class Constants {
     public static final String COMICY_TS = "1";
     public static final String COMICY_TS_PARAMETER = "ts";
     public static final String COMICY_HASH_PARAMETER = "hash";
+    public static final String FIREBASE_CHILD_COMICS = "comics";
 }
